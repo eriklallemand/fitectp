@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,18 +14,32 @@ namespace ContosoUniversity.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult UploadPhoto(string Image,
-       HttpPostedFileBase photo)
-        {
-            string path = Image;
+        //[HttpPost]
+        //public ActionResult UploadPhoto(string Image, HttpPostedFileBase photo)
+        //{
+        //    string path = @""+Image;
 
-            if (photo != null)
-                photo.SaveAs(path);
+        //    if (photo != null)
+        //        photo.SaveAs(path);
 
-           // return RedirectToAction("Index");
-            return View();
-        }
+        //   // return RedirectToAction("Index");
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult UploadPhoto(HttpPostedFileBase photo)
+        //{
+        //    string directory = @"D:\Temp\";
+
+        //    if (photo != null && photo.ContentLength > 0)
+        //    {
+        //        var fileName = Path.GetFileName(photo.FileName);
+        //        photo.SaveAs(Path.Combine(directory, fileName));
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
