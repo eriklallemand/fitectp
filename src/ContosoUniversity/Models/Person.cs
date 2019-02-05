@@ -25,5 +25,10 @@ namespace ContosoUniversity.Models
                 return LastName + ", " + FirstMidName;
             }
         }
+
+        [StringLength(50)]
+        public string Login { get; set; }
+        [StringLength(50)]
+        public string Password { get; set; }
     }
 }
