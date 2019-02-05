@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
+using ContosoUniversity.ViewModels;
 
 namespace ContosoUniversity.Controllers
 {
@@ -62,9 +63,11 @@ namespace ContosoUniversity.Controllers
                 Session["User"] = student.Login;
                 Session["UserFirstName"] = student.FirstMidName;
                 Session["UserLastName"] = student.LastName;
+
+
             } else
             {
-
+                ViewBag["Erreur"] = "Login or password invalid !";
             }
 
             //if (ModelState.IsValid)
@@ -90,16 +93,24 @@ namespace ContosoUniversity.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InstructorSignup([Bind(Include = "ID,LastName,FirstMidName,Login,Password,HireDate")] Instructor instructor)
+        public ActionResult InstructorSignup([Bind(Include = "LastName,FirstMidName,Login,Password")] UserLoginInfo userLoginInfo)
         {
             if (ModelState.IsValid)
             {
+
+                Instructor instructor = new Instructor();
+                instructor.LastName = userLoginInfo.LastName;
+                instructor.FirstMidName = userLoginInfo.FirstMidName;
+                instructor.Login = userLoginInfo.Login;
+                instructor.Password = userLoginInfo.Password;
+                instructor.HireDate = DateTime.Now;
+
                 db.People.Add(instructor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(instructor);
+            return View();
         }
 
         // GET: Authentication/Create
