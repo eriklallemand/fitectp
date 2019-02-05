@@ -78,6 +78,7 @@ namespace ContosoUniversity.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Courses = db.Courses;
             return View(student);
         }
 
@@ -201,6 +202,35 @@ namespace ContosoUniversity.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpPost]
+        public ActionResult Details(string Enrollments, int StudentID)
+        {
+            Enrollment e = new Enrollment();
+            try
+            {
+                e.StudentID = StudentID;
+                e.CourseID = int.Parse(Enrollments);
+
+                db.Enrollments.Add(e);
+                db.SaveChanges();
+                return RedirectToAction("Details");
+
+            }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.)
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            PopulateCoursesDropDownList(e.CourseID);
+            return View();
+        }
+        private void PopulateCoursesDropDownList(object selectedCourse = null)
+        {
+            var CoursesQuery = from d in db.Courses
+                               orderby d.Title
+                               select d;
+            ViewBag.CourseID = new SelectList(CoursesQuery, "CourseID", "Title", selectedCourse);
         }
     }
 }
