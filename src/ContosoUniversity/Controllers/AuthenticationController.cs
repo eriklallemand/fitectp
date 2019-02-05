@@ -59,12 +59,16 @@ namespace ContosoUniversity.Controllers
         {
             if(db.Students.Any(x => x.Login == student.Login && x.Password == student.Password))
             {
-                int y = 0;
-                y++;
+
 
                 /////////////////////////////////////////////////
                 //insert code to make authentication persistent
                 /////////////////////////////////////////////////
+
+                Session["User"] = student.Login;
+                Session["UserFirstName"] = student.FirstMidName;
+                Session["UserLastName"] = student.LastName;
+
 
                 //HttpContext.Profile.UserName = student.Login;
                 //HttpContext.Profile.IsAnonymous = false;
