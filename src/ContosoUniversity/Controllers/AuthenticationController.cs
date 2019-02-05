@@ -59,30 +59,22 @@ namespace ContosoUniversity.Controllers
         {
             if(db.Students.Any(x => x.Login == student.Login && x.Password == student.Password))
             {
-
-
-                /////////////////////////////////////////////////
-                //insert code to make authentication persistent
-                /////////////////////////////////////////////////
-
                 Session["User"] = student.Login;
                 Session["UserFirstName"] = student.FirstMidName;
                 Session["UserLastName"] = student.LastName;
-
-
-                //HttpContext.Profile.UserName = student.Login;
-                //HttpContext.Profile.IsAnonymous = false;
-            }
-
-
-            if (ModelState.IsValid)
+            } else
             {
-                db.People.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
             }
 
-            return View(student);
+            //if (ModelState.IsValid)
+            //{
+            //    db.People.Add(student);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            return View();
         }
 
 
