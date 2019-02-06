@@ -53,7 +53,8 @@ namespace ContosoUniversity.Controllers
                     return View();
                 }
 
-                var fileName = Path.GetFileName(photo.FileName);
+                //var fileName = Path.GetFileName(photo.FileName);
+                var fileName = Path.GetFileName(Session["UserId"].ToString() + "." + fileExt);
                 photo.SaveAs(Path.Combine(directory, fileName));
                 ViewBag.photopath = Path.Combine("..", "Images", fileName);
             }
