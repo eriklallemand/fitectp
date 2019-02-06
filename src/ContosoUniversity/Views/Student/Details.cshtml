@@ -9,6 +9,10 @@
 <div>
     <h4>Student</h4>
     <hr />
+    @if(ViewData["ErrorMessage"] != null)
+    {
+        <p>@ViewData["ErrorMessage"] </p>
+    }
 
     @using (Html.BeginForm())
     {

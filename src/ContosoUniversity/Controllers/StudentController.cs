@@ -211,7 +211,17 @@ namespace ContosoUniversity.Controllers
             {
                 e.StudentID = StudentID;
                 e.CourseID = int.Parse(Enrollments);
-
+                //if(db.Enrollments.Any(x => x.CourseID==e.CourseID && x.StudentID==e.StudentID))
+                //{
+                //    ViewData["ErrorMessage"] = "Suscription failed. You are already subscibed in this Course.";
+                //    return View();
+                //}
+                //else
+                //{
+                //    db.Enrollments.Add(e);
+                //    db.SaveChanges();
+                //    return RedirectToAction("Details");
+                //}
                 db.Enrollments.Add(e);
                 db.SaveChanges();
                 return RedirectToAction("Details");
