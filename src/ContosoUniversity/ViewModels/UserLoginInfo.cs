@@ -12,5 +12,6 @@ namespace ContosoUniversity.ViewModels
         public string Login { get; set; }
         public string Password { get; set; }
         public string Discriminator { get; set; }
+        public DateTime StartingDate { get; set; }
     }
 }

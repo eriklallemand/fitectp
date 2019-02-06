@@ -70,7 +70,7 @@ namespace ContosoUniversity.Controllers
                 return RedirectToAction("Index");
             } else
             {
-                ViewBag["Erreur"] = "Login or password invalid !";
+                ViewData["Erreur"] = "Invalid login or password";
                 return View();
             }
         }
