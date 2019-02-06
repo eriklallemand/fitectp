@@ -9,31 +9,36 @@
 <div>
     <h4>Student</h4>
     <hr />
-    @if(ViewData["ErrorMessage"] != null)
+    @if(TempData["ErrorMessage"] != null)
     {
-        <p>@ViewData["ErrorMessage"] </p>
+        <p>@TempData["ErrorMessage"] </p>
     }
 
-    @using (Html.BeginForm())
+    @if (Model != null && Model.ID.ToString() == Session["UserId"].ToString())
     {
-        @Html.AntiForgeryToken()
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        @Html.Hidden("StudentID", Model.ID)
-        <div class="form-group">
-            @Html.LabelFor(model => model.Enrollments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Enrollments, selectList: new SelectList(items: ViewBag.Courses,
-                 dataValueField: "CourseID",
-                 dataTextField: "Title"),
-                 optionLabel: String.Empty)
-            </div>
+            @Html.Hidden("StudentID", Model.ID)
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Subscribe" class="btn btn-default" />
+                @Html.LabelFor(model => model.Enrollments, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Enrollments, selectList: new SelectList(items: ViewBag.Courses,
+                     dataValueField: "CourseID",
+                     dataTextField: "Title"),
+                     optionLabel: String.Empty)
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Subscribe" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+
     }
+
 
     <dl class="dl-horizontal">
         <dt>
