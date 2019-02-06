@@ -232,5 +232,7 @@ namespace ContosoUniversity.Controllers
                                select d;
             ViewBag.CourseID = new SelectList(CoursesQuery, "CourseID", "Title", selectedCourse);
         }
+
+        
     }
 }
