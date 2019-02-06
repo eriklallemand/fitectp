@@ -9,7 +9,8 @@ namespace ContosoUniversity.Models
 {
     public class CourseOccurrence
     {
-        public int OccurrenceID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
         public int CourseID { get; set; }
         public string Day { get; set; }
         [Range(0, 23)]

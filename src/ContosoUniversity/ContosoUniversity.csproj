@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201902041651146_AuthenticationLoginPassword.Designer.cs">
       <DependentUpon>201902041651146_AuthenticationLoginPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902061526403_CreatingCourseOccurrenceTable.cs" />
+    <Compile Include="Migrations\201902061526403_CreatingCourseOccurrenceTable.Designer.cs">
+      <DependentUpon>201902061526403_CreatingCourseOccurrenceTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOccurrence.cs" />
@@ -287,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902041651146_AuthenticationLoginPassword.resx">
       <DependentUpon>201902041651146_AuthenticationLoginPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902061526403_CreatingCourseOccurrenceTable.resx">
+      <DependentUpon>201902061526403_CreatingCourseOccurrenceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
