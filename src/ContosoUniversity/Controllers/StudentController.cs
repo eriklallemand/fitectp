@@ -195,6 +195,7 @@ namespace ContosoUniversity.Controllers
             }
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -203,6 +204,7 @@ namespace ContosoUniversity.Controllers
             }
             base.Dispose(disposing);
         }
+
         [HttpPost]
         public ActionResult Details(string Enrollments, int StudentID)
         {
@@ -211,9 +213,16 @@ namespace ContosoUniversity.Controllers
             {
                 e.StudentID = StudentID;
                 e.CourseID = int.Parse(Enrollments);
-
-                db.Enrollments.Add(e);
-                db.SaveChanges();
+                if (db.Enrollments.Any(x => x.CourseID == e.CourseID && x.StudentID == e.StudentID))
+                {
+                    TempData["ErrorMessage"] = "Suscription failed. You are already subscibed in this Course.";
+                }
+                else
+                {
+                    db.Enrollments.Add(e);
+                    db.SaveChanges();
+                   
+                }
                 return RedirectToAction("Details");
 
             }
@@ -225,6 +234,7 @@ namespace ContosoUniversity.Controllers
             PopulateCoursesDropDownList(e.CourseID);
             return View();
         }
+
         private void PopulateCoursesDropDownList(object selectedCourse = null)
         {
             var CoursesQuery = from d in db.Courses

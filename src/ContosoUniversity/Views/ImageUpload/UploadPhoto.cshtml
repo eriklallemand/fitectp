@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "UploadPhoto";
 }
-
 <h2>UploadPhoto</h2>
 
 <div class="row">
@@ -10,42 +9,24 @@
         <hgroup class="title">
             <h1>Upload Photo</h1>
         </hgroup>
-        @*@using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-horizontal">
-                    <hr />
-                    <div class="medium-12 column">
-                        <input class="tiny button" type="submit" value="Save" />
-                        @Html.ActionLink("Back to List", "Index", null,
-                        new { @class = "tiny button" })
-                    </div>
-                </div>
-            }
-            @if (File.Exists(Server.MapPath("~/Images/"
-            + Html.DisplayFor(modelItem => Model.Image))))
-            {
-                <img alt="" src="~/Images/@Html.DisplayFor(modelItem   => Model.Image)" />
-                <form action="/DeletePhoto" method="post" name="deletePhoto">
-                    @Html.AntiForgeryToken()
-                    <input type="text" name="photoFileName" value="@Html.DisplayFor(modelItem => Model.Image)" />
+        <form action="UploadPhoto" method="post" enctype="multipart/form-data">
 
-                    <input class="tiny button" type="submit" value="Delete" />
-                </form>
+            <label for="photo"> Upload Photo:</label>
+            <input type="file" name="photo" id="photo" />
+
+            <input type="submit" value="UploadPhoto" />
+
+            @if (ViewBag.photopath != null)
+            {
+                <img src="@ViewBag.photopath" height="100"/>
             }
-            else
-            {*@
-        <form action="UploadPhoto" enctype="multipart/form-data" method="post">
-            <label for="photo"> Upload a Photo: </label>
-            <input class="tiny button" id="photo" type="file" name="photo" />
-            <input class="tiny button" type="submit" value="Upload" />
-            <input type="hidden" name="Image" value="@Html.DisplayFor(modelItem => Model.Image)" />
+
         </form>
-
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
         }
     </div>
 </div>
+
 
