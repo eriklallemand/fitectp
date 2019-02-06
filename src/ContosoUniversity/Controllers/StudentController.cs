@@ -233,6 +233,20 @@ namespace ContosoUniversity.Controllers
             ViewBag.CourseID = new SelectList(CoursesQuery, "CourseID", "Title", selectedCourse);
         }
 
-        
+        //GET: Student/my_profile
+        public ActionResult My_Profile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Student student = db.Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Courses = db.Courses;
+            return View(student);
+        }
     }
 }

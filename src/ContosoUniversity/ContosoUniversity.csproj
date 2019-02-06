@@ -257,7 +257,7 @@
     <Content Include="Views\Authentication\Signin.cshtml" />
     <Content Include="Views\Authentication\Signup.cshtml" />
     <Content Include="Views\ImageUpload\UploadPhoto.cshtml" />
-    <Content Include="Views\Home\My_Profile.cshtml" />
+    <Content Include="Views\Student\My_Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
