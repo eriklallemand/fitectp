@@ -10,13 +10,13 @@ namespace ContosoUniversity.Models
     {
         public int ID { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
-        [AllowHtml]
-        public string Contents { get; set; }
-
-        public byte[] Image { get; set; }
+        public string Image
+            {
+                get { return Name.Replace(" ", string.Empty) + ".jpg"; }
+            }
     }
 }
