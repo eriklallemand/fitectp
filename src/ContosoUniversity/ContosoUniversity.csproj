@@ -123,6 +123,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BL\DBInteraction.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -250,11 +251,9 @@
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Course\UpdateCourseCredits.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Authentication\StudentSignup.cshtml" />
-    <Content Include="Views\Authentication\StudentSignin.cshtml" />
     <Content Include="Views\Authentication\Index.cshtml" />
-    <Content Include="Views\Authentication\InstructorSignin.cshtml" />
-    <Content Include="Views\Authentication\InstructorSignup.cshtml" />
+    <Content Include="Views\Authentication\Signin.cshtml" />
+    <Content Include="Views\Authentication\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
