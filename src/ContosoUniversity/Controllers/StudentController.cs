@@ -4,6 +4,7 @@ using PagedList;
 using System;
 using System.Data;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -243,20 +244,6 @@ namespace ContosoUniversity.Controllers
             ViewBag.CourseID = new SelectList(CoursesQuery, "CourseID", "Title", selectedCourse);
         }
 
-        //GET: Student/my_profile
-        public ActionResult My_Profile(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Student student = db.Students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Courses = db.Courses;
-            return View(student);
-        }
+
     }
 }

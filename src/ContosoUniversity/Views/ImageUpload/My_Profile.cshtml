@@ -71,7 +71,16 @@
                 }
             </table>
         </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.ImagePath)*@
+            @Html.ActionLink("Change Photo", "UploadPhoto", "ImageUpload")
 
+        </dt>
+
+        <dd>
+            <img src="@Path.Combine("../..", "Images",Model.ImagePath)" />
+            @*@Html.DisplayFor(model => model.ImagePath)*@
+        </dd>
     </dl>
 </div>
 <p>
