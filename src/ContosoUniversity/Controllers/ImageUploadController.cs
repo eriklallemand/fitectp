@@ -61,10 +61,22 @@ namespace ContosoUniversity.Controllers
             return View();
         }
 
+        // GET: DeletePhoto
+        public ActionResult DeletePhoto()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeletePhoto(string photoFileName)
         {
+            //string UserId = Session["UserId"].ToString();
+            //int UserIdAsInt = int.Parse(UserId);
+            Person p = db.People.Find(Session["UserId"]);
+            p.ImagePath = null;
+            db.SaveChanges();
+
             //Session["DeleteSuccess"] = "No";
             var photoName = "";
             photoName = photoFileName;
@@ -75,22 +87,8 @@ namespace ContosoUniversity.Controllers
                 System.IO.File.Delete(fullPath);
                 //Session["DeleteSuccess"] = "Yes";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("UploadPhoto");
         }
-        public string Find_Image(string id)
-        {
-            string partialName = id;
-            DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(@"~\Images\");
-            FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
-            string fullName="";
-            foreach (FileInfo foundFile in filesInDir)
-            {
-                 fullName = foundFile.FullName;
-            }
-            return fullName;
-        }
-
-
         //GET: Student/my_profile
         public ActionResult My_Profile(int? id)
         {

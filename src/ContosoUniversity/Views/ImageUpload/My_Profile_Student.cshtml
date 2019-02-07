@@ -78,17 +78,19 @@
         <dd>
             @if (Model.ImagePath != null)
             {
-                <img src="@Path.Combine("../..", "Images", Model.ImagePath)" />
+                <img src="@Path.Combine("../..", "Images", Model.ImagePath)" height="100" />
             }
             else
             {
-                @Html.ActionLink("Change Photo", "UploadPhoto", "ImageUpload");
+                @Html.ActionLink("Upload Photo", "UploadPhoto", "ImageUpload")
             }
-
         </dd>
+        @Html.ActionLink("Change Photo", "UploadPhoto", "ImageUpload") |
+        @Html.ActionLink("Delete Photo", "DeletePhoto", "ImageUpload")
     </dl>
 </div>
 <p>
+   
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
