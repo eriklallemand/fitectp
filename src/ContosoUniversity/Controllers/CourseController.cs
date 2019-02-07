@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
 using System.Data.Entity.Infrastructure;
+using ContosoUniversity.BL;
 
 namespace ContosoUniversity.Controllers
 {
@@ -30,6 +31,37 @@ namespace ContosoUniversity.Controllers
             var sql = courses.ToString();
             return View(courses.ToList());
         }
+
+        public ActionResult CreateWithOccurrences()
+        {
+            PopulateDepartmentsDropDownList();
+            PopulateHoursDropDownList(8,18);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateWithOccurrences([Bind(Include = "CourseID,Title,Credits,DepartmentID")]Course course)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Courses.Add(course);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.)
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            PopulateDepartmentsDropDownList(course.DepartmentID);
+            return View(course);
+        }
+
+
 
         // GET: Course/Details/5
         public ActionResult Details(int? id)
@@ -124,6 +156,13 @@ namespace ContosoUniversity.Controllers
                                    orderby d.Name
                                    select d;
             ViewBag.DepartmentID = new SelectList(departmentsQuery, "DepartmentID", "Name", selectedDepartment);
+        }
+
+        private void PopulateHoursDropDownList(int minHour, int maxHour)
+        {
+            var HourRange = GeneralPurpose.IntRange(minHour, maxHour);
+            ViewBag.StartingHour = new SelectList(HourRange);
+            //ViewBag.StartingHour = new SelectList(HourRange, "StartingHour", "Hour", minHour);
         }
 
 
