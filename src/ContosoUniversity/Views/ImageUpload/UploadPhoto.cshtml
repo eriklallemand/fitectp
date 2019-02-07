@@ -9,6 +9,10 @@
         <hgroup class="title">
             <h1>Upload Photo</h1>
         </hgroup>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <p>@TempData["ErrorMessage"] </p>
+        }
         <form action="UploadPhoto" method="post" enctype="multipart/form-data">
 
             <label for="photo"> Upload Photo:</label>
@@ -18,7 +22,7 @@
 
             @if (ViewBag.photopath != null)
             {
-                <img src="@ViewBag.photopath" height="100"/>
+                <img src="@ViewBag.photopath" height="100" />
             }
 
         </form>

@@ -1,10 +1,10 @@
 ﻿@model ContosoUniversity.Models.Student
 
 @{
-    ViewBag.Title = "My_Profile";
+    ViewBag.Title = "My_Profile_Student";
 }
 
-<h2>My_Profile</h2>
+<h2>My_Profile_Student</h2>
 
 <div>
     <h4>Student</h4>
@@ -70,16 +70,21 @@
                     </tr>
                 }
             </table>
-        </dd>
-        <dt>
-            @*@Html.DisplayNameFor(model => model.ImagePath)*@
-            @Html.ActionLink("Change Photo", "UploadPhoto", "ImageUpload")
 
+        <dt>
+            Photo
         </dt>
 
         <dd>
-            <img src="@Path.Combine("../..", "Images",Model.ImagePath)" />
-            @*@Html.DisplayFor(model => model.ImagePath)*@
+            @if (Model.ImagePath != null)
+            {
+                <img src="@Path.Combine("../..", "Images", Model.ImagePath)" />
+            }
+            else
+            {
+                @Html.ActionLink("Change Photo", "UploadPhoto", "ImageUpload");
+            }
+
         </dd>
     </dl>
 </div>

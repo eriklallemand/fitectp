@@ -31,6 +31,7 @@ namespace ContosoUniversity.Controllers
                 if (photo.ContentLength > 102400)
                 {
                     ModelState.AddModelError("photo", "The size of the file should not exceed 100 KB");
+                    TempData["ErrorMessage"] = "The size of the file should not exceed 100 KB";
                     return View();
                 }
 
@@ -41,6 +42,7 @@ namespace ContosoUniversity.Controllers
                 if (!supportedTypes.Contains(fileExt))
                 {
                     ModelState.AddModelError("photo", "Invalid type. Only the following types (jpg, jpeg, png) are supported.");
+                    TempData["ErrorMessage"] = "Invalid type. Only the following types (jpg, jpeg, png) are supported.";
                     return View();
                 }
 
@@ -96,27 +98,30 @@ namespace ContosoUniversity.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            if(db.Students.Any(x => x.ID== id))
             {
-                return HttpNotFound();
+                Student student = db.Students.Find(id);
+                if (student == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Courses = db.Courses;
+                return View("My_Profile_Student",student);
             }
-            ViewBag.Courses = db.Courses;
-            return View(student);
+            else
+            {
+                Instructor instructor= db.Instructors.Find(id);
+                if (instructor == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Courses = db.Courses;
+                ViewBag.OfficeAssignments = db.OfficeAssignments;
+                return View("My_Profile_Instructor",instructor);
+            }
+
         }
-        //public string Find_Image(string id)
-        //{
-        //    Student student = db.Students.Find(id);
-        //    string partialName = id;
-        //    DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(@"~\Images\");
-        //    FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
-        //    string fullName = "";
-        //    foreach (FileInfo foundFile in filesInDir)
-        //    {
-        //        fullName = foundFile.FullName;
-        //    }
-        //    return fullName;
-        //}
+
     }
 }
  
