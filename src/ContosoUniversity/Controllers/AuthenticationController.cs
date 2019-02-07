@@ -44,6 +44,10 @@ namespace ContosoUniversity.Controllers
                 {
                     DBInteraction.AddPerson(userLoginInfo.Discriminator, userLoginInfo.LastName, userLoginInfo.FirstMidName, DateTime.Now, userLoginInfo.Login, userLoginInfo.Password);
                     return RedirectToAction("Index");
+                } else
+                {
+                    ViewData["Erreur"] = "This login already exists.";
+                    return View();
                 }
             }
             return View();
