@@ -1,8 +1,10 @@
-﻿@{
+﻿@model IEnumerable<ContosoUniversity.ViewModels.AnonymousHomepageCourses>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>Contoso University</h1>
 </div>
 <div class="row">
@@ -24,4 +26,26 @@
         <p>You can download the completed project from the Microsoft Code Gallery.</p>
         <p><a class="btn btn-default" href="http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8">Download &raquo;</a></p>
     </div>
+</div>*@
+<div class="jumbotron">
+    <h1>Contoso University</h1>
 </div>
+<div class="col-md-4">
+    <h2>Courses at Contoso University</h2>
+<ul>
+
+    @foreach (var course in Model)
+    {
+        <li>
+            @course.Title
+        <ul>
+            <li>@String.Concat(course.FirstName, " ", course.LastName)</li>
+        </ul>
+    </li>
+}
+</ul>
+</div>
+
+
+
+
