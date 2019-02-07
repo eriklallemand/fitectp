@@ -30,5 +30,10 @@ namespace ContosoUniversity.Models
         public string Login { get; set; }
         [StringLength(50)]
         public string Password { get; set; }
+        public string ImagePath { get; set; }
+        //public string Image
+        //{
+        //    get { return ImagePath.Replace(" ", string.Empty) + ".jpg"; }
+        //}
     }
 }

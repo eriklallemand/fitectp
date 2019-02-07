@@ -173,6 +173,14 @@
     <Compile Include="Migrations\201902041651146_AuthenticationLoginPassword.Designer.cs">
       <DependentUpon>201902041651146_AuthenticationLoginPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902071124115_ImagePathInPersonTable.cs" />
+    <Compile Include="Migrations\201902071124115_ImagePathInPersonTable.Designer.cs">
+      <DependentUpon>201902071124115_ImagePathInPersonTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071125239_ImagePathInPersonTable1.cs" />
+    <Compile Include="Migrations\201902071125239_ImagePathInPersonTable1.Designer.cs">
+      <DependentUpon>201902071125239_ImagePathInPersonTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOccurrence.cs" />
@@ -259,6 +267,7 @@
     <Content Include="Views\Authentication\Signin.cshtml" />
     <Content Include="Views\Authentication\Signup.cshtml" />
     <Content Include="Views\ImageUpload\UploadPhoto.cshtml" />
+    <Content Include="Views\ImageUpload\My_Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902041651146_AuthenticationLoginPassword.resx">
       <DependentUpon>201902041651146_AuthenticationLoginPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071124115_ImagePathInPersonTable.resx">
+      <DependentUpon>201902071124115_ImagePathInPersonTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071125239_ImagePathInPersonTable1.resx">
+      <DependentUpon>201902071125239_ImagePathInPersonTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

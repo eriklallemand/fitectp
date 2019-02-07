@@ -36,9 +36,9 @@
                     <li>@Html.ActionLink("Courses", "Index", "Course")</li>
                     <li>@Html.ActionLink("Instructors", "Index", "Instructor")</li>
                     <li>@Html.ActionLink("Departments", "Index", "Department")</li>
-                    <li>@Html.ActionLink("Photos", "UploadPhoto", "ImageUpload")</li>
                     @if (Session["User"] != null)
                     {
+                    <li>@Html.ActionLink("My Profile", "My_Profile/"+Session["UserID"].ToString(), "ImageUpload")</li>
                         <li>@Html.ActionLink(Session["User"].ToString(), "Index", "Authentication")</li>
                     }
                     else
