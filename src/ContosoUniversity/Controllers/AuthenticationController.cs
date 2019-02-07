@@ -38,15 +38,16 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Signup([Bind(Include = "LastName,FirstMidName,Login,Password,Discriminator")] UserLoginInfo userLoginInfo)
         {
-            if(!db.People.Any(x => x.Login == userLoginInfo.Login))
-            { 
-                DBInteraction.AddPerson(userLoginInfo.Discriminator, userLoginInfo.LastName, userLoginInfo.FirstMidName, DateTime.Now, userLoginInfo.Login, userLoginInfo.Password);
-                return RedirectToAction("Index");
-            } else
+            if (ModelState.IsValid)
             {
-            return View();
+                if (!db.People.Any(x => x.Login == userLoginInfo.Login))
+                {
+                    DBInteraction.AddPerson(userLoginInfo.Discriminator, userLoginInfo.LastName, userLoginInfo.FirstMidName, DateTime.Now, userLoginInfo.Login, userLoginInfo.Password);
+                    return RedirectToAction("Index");
+                }
             }
-        }
+            return View();
+    }
 
         // GET: Authentication/Create
         public ActionResult Signin()
@@ -67,7 +68,9 @@ namespace ContosoUniversity.Controllers
                 Session["UserFirstName"] = person.FirstMidName;
                 Session["UserLastName"] = person.LastName;
                 Session["UserDiscriminator"] = db.Students.Any(x => x.ID == person.ID) ? "Student" : "Instructor" ;
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("../Home/Index");
+
             } else
             {
                 ViewData["Erreur"] = "Invalid login or password";
