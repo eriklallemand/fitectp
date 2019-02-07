@@ -1,0 +1,32 @@
+﻿@model ContosoUniversity.Models.ImageUpload
+@{
+    ViewBag.Title = "UploadPhoto";
+}
+<h2>UploadPhoto</h2>
+
+<div class="row">
+    <div class="large-12 columns">
+        <hgroup class="title">
+            <h1>Upload Photo</h1>
+        </hgroup>
+        <form action="UploadPhoto" method="post" enctype="multipart/form-data">
+
+            <label for="photo"> Upload Photo:</label>
+            <input type="file" name="photo" id="photo" />
+
+            <input type="submit" value="UploadPhoto" />
+
+            @if (ViewBag.photopath != null)
+            {
+                <img src="@ViewBag.photopath" height="100"/>
+            }
+
+        </form>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>
+
+
