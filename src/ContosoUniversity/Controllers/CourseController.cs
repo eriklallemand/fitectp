@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
 using System.Data.Entity.Infrastructure;
+using ContosoUniversity.BL;
 
 namespace ContosoUniversity.Controllers
 {
@@ -30,6 +31,45 @@ namespace ContosoUniversity.Controllers
             var sql = courses.ToString();
             return View(courses.ToList());
         }
+
+        public ActionResult AddCourseOccurrence(int? id)
+        {
+            if(id is null)
+            {
+                return RedirectToAction("Index");
+            }
+            Course c = db.Courses.First(x => x.CourseID == id);
+            //PopulateDepartmentsDropDownList();
+            PopulateDaysDropDownList();
+            PopulateHoursDropDownList(8,18);
+            PopulateMinutesDropDownList();
+            PopulateDurationDropDownList(1,660);
+            return View(c);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCourseOccurrence([Bind(Include = "CourseID,DayOfWeek,StartingHour,StartingMinute,DurationMinutes")]CourseOccurrence occurrence)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.CourseOccurrences.Add(occurrence);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.)
+                ModelState.AddModelError("", "Unable to add occurrence. Try again, and if the problem persists, see your system administrator.");
+            }
+            //PopulateDepartmentsDropDownList(course.DepartmentID);
+            return View(occurrence.CourseID);
+        }
+
+
 
         // GET: Course/Details/5
         public ActionResult Details(int? id)
@@ -125,6 +165,32 @@ namespace ContosoUniversity.Controllers
                                    select d;
             ViewBag.DepartmentID = new SelectList(departmentsQuery, "DepartmentID", "Name", selectedDepartment);
         }
+
+        private void PopulateHoursDropDownList(int minHour, int maxHour)
+        {
+            var HourRange = GeneralPurpose.IntRange(minHour, maxHour);
+            ViewBag.StartingHour = new SelectList(HourRange);
+        }
+
+        private void PopulateMinutesDropDownList(int minMinute = 0, int maxMinute = 59)
+        {
+            var MinuteRange = GeneralPurpose.IntRange(minMinute, maxMinute);
+            ViewBag.StartingMinute = new SelectList(MinuteRange);
+        }
+
+        private void PopulateDurationDropDownList(int minMinute = 0, int maxMinute = 59)
+        {
+            var MinuteRange = GeneralPurpose.IntRange(minMinute, maxMinute);
+            ViewBag.DurationMinutes = new SelectList(MinuteRange);
+        }
+
+        //PopulateDaysDropDownList
+        private void PopulateDaysDropDownList()
+        {
+            var DayRange = GeneralPurpose.IntRange(1, 7);
+            ViewBag.DayOfWeek = new SelectList(DayRange);
+        }
+
 
 
         // GET: Course/Delete/5

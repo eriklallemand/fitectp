@@ -10,6 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+
 @using (Html.BeginForm())
 {
     <p>
@@ -53,7 +54,9 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID }) |
+                @Html.ActionLink("Add Occurrence", "AddCourseOccurrence", new { id = item.CourseID })
+
             </td>
         </tr>
     }

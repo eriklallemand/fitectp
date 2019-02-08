@@ -17,11 +17,21 @@ namespace ContosoUniversity.Controllers
 
         public ActionResult Index()
         {
-            string query = "SELECT c.Title, p.FirstName, p.LastName "
-                        + "FROM Person p, CourseInstructor ci, Course c " 
-                        + "WHERE p.ID = ci.InstructorID "
-                        + "AND ci.CourseID = c.CourseID "
-                        + "AND p.Discriminator = 'Instructor' ";
+
+            //string query = "SELECT c.Title, p.FirstName, p.LastName, COUNT(co.CourseOccurrenceID) as NumberOfSessions "
+            //                + "FROM Person p, CourseInstructor ci, Course c LEFT OUTER JOIN CourseOccurrence co ON c.CourseID = co.CourseID "
+            //                + "WHERE p.ID = ci.InstructorID "
+            //                + "AND ci.CourseID = c.CourseID "
+            //                + "AND p.Discriminator = 'Instructor' "
+            //                + "GROUP BY c.Title, p.FirstName, p.LastName";
+
+            string query = "SELECT c.Title, p.FirstName, p.LastName, CONVERT(VARCHAR,c.StartDate,103) as StartDate, COUNT(co.CourseOccurrenceID) as NumberOfSessions "
+                             + "FROM Person p, CourseInstructor ci, Course c LEFT OUTER JOIN CourseOccurrence co ON c.CourseID = co.CourseID "
+                             + "WHERE p.ID = ci.InstructorID "
+                             + "AND ci.CourseID = c.CourseID "
+                             + "AND p.Discriminator = 'Instructor' "
+                             + "GROUP BY c.Title, p.FirstName, p.LastName, c.StartDate";
+
 
             IEnumerable<AnonymousHomepageCourses> data = db.Database.SqlQuery<AnonymousHomepageCourses>(query);
             return View(data.ToList());

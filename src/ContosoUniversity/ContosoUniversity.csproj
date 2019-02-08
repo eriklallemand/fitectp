@@ -124,6 +124,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BL\DBInteraction.cs" />
+    <Compile Include="BL\GeneralPurpose.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -181,6 +182,18 @@
     <Compile Include="Migrations\201902071125239_ImagePathInPersonTable1.Designer.cs">
       <DependentUpon>201902071125239_ImagePathInPersonTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs" />
+    <Compile Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.Designer.cs">
+      <DependentUpon>201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902081104599_MatchCurrentModelPlease.cs" />
+    <Compile Include="Migrations\201902081104599_MatchCurrentModelPlease.Designer.cs">
+      <DependentUpon>201902081104599_MatchCurrentModelPlease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902081335097_StartDateInCourseTable.cs" />
+    <Compile Include="Migrations\201902081335097_StartDateInCourseTable.Designer.cs">
+      <DependentUpon>201902081335097_StartDateInCourseTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201902071529240_myprofilephoto.cs" />
     <Compile Include="Migrations\201902071529240_myprofilephoto.Designer.cs">
       <DependentUpon>201902071529240_myprofilephoto.cs</DependentUpon>
@@ -196,6 +209,8 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CourseOccurrence.cs" />
+    <Compile Include="ViewModels\CourseWithOccurrences.cs" />
     <Compile Include="ViewModels\AssignedCourseData.cs" />
     <Compile Include="ViewModels\AnonymousHomepageCourses.cs" />
     <Compile Include="ViewModels\EnrollmentDateGroup.cs" />
@@ -271,6 +286,8 @@
     <Content Include="Views\Authentication\Signin.cshtml" />
     <Content Include="Views\Authentication\Signup.cshtml" />
     <Content Include="Views\ImageUpload\UploadPhoto.cshtml" />
+    <Content Include="Views\ImageUpload\My_Profile.cshtml" />
+    <Content Include="Views\Course\AddCourseOccurrence.cshtml" />
     <Content Include="Views\ImageUpload\My_Profile_Student.cshtml" />
     <Content Include="Views\ImageUpload\My_Profile_Instructor.cshtml" />
     <Content Include="Views\ImageUpload\DeletePhoto.cshtml" />
@@ -313,6 +330,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071125239_ImagePathInPersonTable1.resx">
       <DependentUpon>201902071125239_ImagePathInPersonTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.resx">
+      <DependentUpon>201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081104599_MatchCurrentModelPlease.resx">
+      <DependentUpon>201902081104599_MatchCurrentModelPlease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081335097_StartDateInCourseTable.resx">
+      <DependentUpon>201902081335097_StartDateInCourseTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071529240_myprofilephoto.resx">
       <DependentUpon>201902071529240_myprofilephoto.cs</DependentUpon>

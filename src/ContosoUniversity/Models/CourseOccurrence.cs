@@ -6,8 +6,8 @@ namespace ContosoUniversity.Models
 {
     public class CourseOccurrence
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Number")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int CourseOccurrenceID { get; set; }
         [Required]
         public int CourseID { get; set; }
@@ -20,8 +20,7 @@ namespace ContosoUniversity.Models
         [Required]
         public int DurationMinutes { get; set; }
         
-        public virtual Department Department { get; set; }
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
-        public virtual ICollection<Instructor> Instructors { get; set; }
+        public virtual Course Course { get; set; }
+
     }
 }
