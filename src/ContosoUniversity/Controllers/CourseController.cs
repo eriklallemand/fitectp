@@ -32,22 +32,30 @@ namespace ContosoUniversity.Controllers
             return View(courses.ToList());
         }
 
-        public ActionResult CreateWithOccurrences()
+        public ActionResult AddCourseOccurrence(int? id)
         {
-            PopulateDepartmentsDropDownList();
+            if(id is null)
+            {
+                return RedirectToAction("Index");
+            }
+            Course c = db.Courses.First(x => x.CourseID == id);
+            //PopulateDepartmentsDropDownList();
+            PopulateDaysDropDownList();
             PopulateHoursDropDownList(8,18);
-            return View();
+            PopulateMinutesDropDownList();
+            PopulateDurationDropDownList(1,660);
+            return View(c);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateWithOccurrences([Bind(Include = "CourseID,Title,Credits,DepartmentID")]Course course)
+        public ActionResult AddCourseOccurrence([Bind(Include = "CourseID,DayOfWeek,StartingHour,StartingMinute,DurationMinutes")]CourseOccurrence occurrence)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Courses.Add(course);
+                    db.CourseOccurrences.Add(occurrence);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -55,10 +63,10 @@ namespace ContosoUniversity.Controllers
             catch (RetryLimitExceededException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.)
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                ModelState.AddModelError("", "Unable to add occurrence. Try again, and if the problem persists, see your system administrator.");
             }
-            PopulateDepartmentsDropDownList(course.DepartmentID);
-            return View(course);
+            //PopulateDepartmentsDropDownList(course.DepartmentID);
+            return View(occurrence.CourseID);
         }
 
 
@@ -162,8 +170,27 @@ namespace ContosoUniversity.Controllers
         {
             var HourRange = GeneralPurpose.IntRange(minHour, maxHour);
             ViewBag.StartingHour = new SelectList(HourRange);
-            //ViewBag.StartingHour = new SelectList(HourRange, "StartingHour", "Hour", minHour);
         }
+
+        private void PopulateMinutesDropDownList(int minMinute = 0, int maxMinute = 59)
+        {
+            var MinuteRange = GeneralPurpose.IntRange(minMinute, maxMinute);
+            ViewBag.StartingMinute = new SelectList(MinuteRange);
+        }
+
+        private void PopulateDurationDropDownList(int minMinute = 0, int maxMinute = 59)
+        {
+            var MinuteRange = GeneralPurpose.IntRange(minMinute, maxMinute);
+            ViewBag.DurationMinutes = new SelectList(MinuteRange);
+        }
+
+        //PopulateDaysDropDownList
+        private void PopulateDaysDropDownList()
+        {
+            var DayRange = GeneralPurpose.IntRange(1, 7);
+            ViewBag.DayOfWeek = new SelectList(DayRange);
+        }
+
 
 
         // GET: Course/Delete/5

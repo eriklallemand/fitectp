@@ -186,6 +186,14 @@
     <Compile Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.Designer.cs">
       <DependentUpon>201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902080936373_MakeOccurrenceIdAutoincrement.cs" />
+    <Compile Include="Migrations\201902080936373_MakeOccurrenceIdAutoincrement.Designer.cs">
+      <DependentUpon>201902080936373_MakeOccurrenceIdAutoincrement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902080939077_MakeOccurrenceIdAutoincrement2.cs" />
+    <Compile Include="Migrations\201902080939077_MakeOccurrenceIdAutoincrement2.Designer.cs">
+      <DependentUpon>201902080939077_MakeOccurrenceIdAutoincrement2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOccurrence.cs" />
@@ -275,7 +283,7 @@
     <Content Include="Views\Authentication\Signup.cshtml" />
     <Content Include="Views\ImageUpload\UploadPhoto.cshtml" />
     <Content Include="Views\ImageUpload\My_Profile.cshtml" />
-    <Content Include="Views\Course\CreateWithOccurrences.cshtml" />
+    <Content Include="Views\Course\AddCourseOccurrence.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.resx">
       <DependentUpon>201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902080936373_MakeOccurrenceIdAutoincrement.resx">
+      <DependentUpon>201902080936373_MakeOccurrenceIdAutoincrement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902080939077_MakeOccurrenceIdAutoincrement2.resx">
+      <DependentUpon>201902080939077_MakeOccurrenceIdAutoincrement2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

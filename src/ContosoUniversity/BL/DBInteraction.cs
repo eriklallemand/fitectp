@@ -11,6 +11,9 @@ namespace ContosoUniversity.BL
     {
         private static SchoolContext db = new SchoolContext();
 
+
+        #region Person
+
         public static bool PersonExists(string login)
         {
             return db.People.Any(x => x.Login == login);
@@ -72,6 +75,39 @@ namespace ContosoUniversity.BL
             }
         }
 
+        #endregion
+
+        #region CourseOccurrence
+
+        public static CourseOccurrence getCourseOccurrence(int CourseID, int DayOfWeek, int StartingHour, int StartingMinute, int DurationMinutes)
+        {
+            CourseOccurrence occ = new CourseOccurrence();
+            occ.CourseID = CourseID;
+            occ.DayOfWeek = DayOfWeek;
+            occ.StartingHour = StartingHour;
+            occ.StartingMinute = StartingMinute;
+            occ.DurationMinutes = DurationMinutes;
+            return occ;
+        }
+
+        public static void AddCourseOccurrence(CourseOccurrence occ)
+        {
+            if(db.Courses.Any(x => x.CourseID == occ.CourseID))
+            {
+                db.CourseOccurrences.Add(occ);
+                db.SaveChanges();
+            }
+        }
+
+        public static void AddCourseOccurrence(int CourseID, int DayOfWeek, int StartingHour, int StartingMinute, int DurationMinutes)
+        {
+            CourseOccurrence occ = getCourseOccurrence(CourseID, DayOfWeek, StartingHour, StartingMinute, DurationMinutes);
+            AddCourseOccurrence(occ);
+        }
+
+
+    #endregion
+
     }
-    
+
 }

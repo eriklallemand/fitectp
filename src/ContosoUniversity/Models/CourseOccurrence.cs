@@ -6,8 +6,8 @@ namespace ContosoUniversity.Models
 {
     public class CourseOccurrence
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Number")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int CourseOccurrenceID { get; set; }
         [Required]
         public int CourseID { get; set; }

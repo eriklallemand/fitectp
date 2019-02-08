@@ -8,6 +8,7 @@ namespace ContosoUniversity.ViewModels
 {
     public class CourseOccurrence
     {
+        public int CourseID { get; set; }
         [Required]
         [Range(0, 7)]
         public int DayOfWeek { get; set; }

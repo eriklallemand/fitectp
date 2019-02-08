@@ -9,9 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<p>
-    @Html.ActionLink("Create New With 1 Occurrence", "CreateWithOccurrences")
-</p>
+
 
 @using (Html.BeginForm())
 {
@@ -56,7 +54,9 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID }) |
+                @Html.ActionLink("Add Occurrence", "AddCourseOccurrence", new { id = item.CourseID })
+
             </td>
         </tr>
     }
