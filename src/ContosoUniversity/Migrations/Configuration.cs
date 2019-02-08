@@ -199,7 +199,7 @@ namespace ContosoUniversity.Migrations
                 var enrollmentInDataBase = context.Enrollments.Where(
                     s =>
                          s.Student.ID == e.StudentID &&
-                         s.Course.CourseID == e.CourseID).SingleOrDefault();
+                         s.course.CourseID == e.CourseID).SingleOrDefault();
                 if (enrollmentInDataBase == null)
                 {
                     context.Enrollments.Add(e);
