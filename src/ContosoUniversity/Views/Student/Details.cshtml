@@ -14,7 +14,7 @@
         <p>@TempData["ErrorMessage"] </p>
     }
 
-    @if (Model != null && Model.ID.ToString() == Session["UserId"].ToString())
+    @if (Model != null && Session["UserId"] != null && Model.ID.ToString() == Session["UserId"].ToString())
     {
         using (Html.BeginForm())
         {
@@ -75,7 +75,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Course.Title)
+                            @Html.DisplayFor(modelItem => item.course.Title)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Grade)
