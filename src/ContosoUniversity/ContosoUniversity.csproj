@@ -77,6 +77,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -86,6 +89,12 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -123,7 +132,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\DBInteraction.cs" />
+    <Compile Include="Controllers\Api\StudentDTOesController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -185,6 +196,14 @@
     <Compile Include="Migrations\201902071529240_myprofilephoto.Designer.cs">
       <DependentUpon>201902071529240_myprofilephoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902081204113_StudentApi.cs" />
+    <Compile Include="Migrations\201902081204113_StudentApi.Designer.cs">
+      <DependentUpon>201902081204113_StudentApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902081532231_INeedToDoMigration.cs" />
+    <Compile Include="Migrations\201902081532231_INeedToDoMigration.Designer.cs">
+      <DependentUpon>201902081532231_INeedToDoMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOccurrence.cs" />
@@ -200,6 +219,7 @@
     <Compile Include="ViewModels\AnonymousHomepageCourses.cs" />
     <Compile Include="ViewModels\EnrollmentDateGroup.cs" />
     <Compile Include="ViewModels\InstructorIndexData.cs" />
+    <Compile Include="ViewModels\StudentDTO.cs" />
     <Compile Include="ViewModels\UserLoginInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071529240_myprofilephoto.resx">
       <DependentUpon>201902071529240_myprofilephoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081204113_StudentApi.resx">
+      <DependentUpon>201902081204113_StudentApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081532231_INeedToDoMigration.resx">
+      <DependentUpon>201902081532231_INeedToDoMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

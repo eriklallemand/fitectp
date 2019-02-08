@@ -35,5 +35,7 @@ namespace ContosoUniversity.DAL
         }
 
         public System.Data.Entity.DbSet<ContosoUniversity.Models.ImageUpload> ImageUploads { get; set; }
+
+        public System.Data.Entity.DbSet<ContosoUniversity.ViewModels.StudentDTO> StudentDTOes { get; set; }
     }
 }
