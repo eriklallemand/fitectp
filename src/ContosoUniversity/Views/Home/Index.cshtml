@@ -40,7 +40,8 @@
             @course.Title
             <ul>
                 <li>@String.Concat(course.FirstName, " ", course.LastName)</li>
-                <li>@String.Concat("Session(s) par semaine : ",course.NumberOfSessions)</li>
+                <li>@String.Concat("Premier cours : ", course.StartDate)</li>
+                <li>@String.Concat("Session(s) par semaine : ", course.NumberOfSessions)</li>
             </ul>
     </li>
 }

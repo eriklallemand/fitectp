@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201902081104599_MatchCurrentModelPlease.Designer.cs">
       <DependentUpon>201902081104599_MatchCurrentModelPlease.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902081335097_StartDateInCourseTable.cs" />
+    <Compile Include="Migrations\201902081335097_StartDateInCourseTable.Designer.cs">
+      <DependentUpon>201902081335097_StartDateInCourseTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOccurrence.cs" />
@@ -325,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902081104599_MatchCurrentModelPlease.resx">
       <DependentUpon>201902081104599_MatchCurrentModelPlease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081335097_StartDateInCourseTable.resx">
+      <DependentUpon>201902081335097_StartDateInCourseTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
