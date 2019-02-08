@@ -9,5 +9,6 @@ namespace ContosoUniversity.ViewModels
         public string Credits { get; set; }
         public string DepartmentID { get; set; }
         public CourseOccurrence Occurrence { get; set; }
+
     }
 }

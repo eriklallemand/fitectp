@@ -21,5 +21,7 @@ namespace ContosoUniversity.ViewModels
         [Required]
         [Range(1,660)]
         public int DurationMinutes { get; set; }
+
+        public DateTime StartDate { get; set; }
     }
 }

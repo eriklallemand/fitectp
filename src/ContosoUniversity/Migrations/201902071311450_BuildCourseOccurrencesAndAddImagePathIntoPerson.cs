@@ -11,7 +11,7 @@ namespace ContosoUniversity.Migrations
                 "dbo.CourseOccurrence",
                 c => new
                     {
-                        CourseOccurrenceID = c.Int(nullable: false),
+                        CourseOccurrenceID = c.Int(nullable: false, identity: true),
                         CourseID = c.Int(nullable: false),
                         DayOfWeek = c.Int(nullable: false),
                         StartingHour = c.Int(nullable: false),
