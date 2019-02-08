@@ -17,7 +17,15 @@ namespace ContosoUniversity.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            string query = "SELECT c.Title, p.FirstName, p.LastName "
+                        + "FROM Person p, CourseInstructor ci, Course c " 
+                        + "WHERE p.ID = ci.InstructorID "
+                        + "AND ci.CourseID = c.CourseID "
+                        + "AND p.Discriminator = 'Instructor' ";
+
+            IEnumerable<AnonymousHomepageCourses> data = db.Database.SqlQuery<AnonymousHomepageCourses>(query);
+            return View(data.ToList());
+            //return View();
         }
 
         public ActionResult About()
