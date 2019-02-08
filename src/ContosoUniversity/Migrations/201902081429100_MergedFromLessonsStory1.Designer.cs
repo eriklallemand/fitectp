@@ -7,13 +7,13 @@ namespace ContosoUniversity.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ImagePathInPersonTable1 : IMigrationMetadata
+    public sealed partial class MergedFromLessonsStory1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ImagePathInPersonTable1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MergedFromLessonsStory1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902071125239_ImagePathInPersonTable1"; }
+            get { return "201902081429100_MergedFromLessonsStory1"; }
         }
         
         string IMigrationMetadata.Source

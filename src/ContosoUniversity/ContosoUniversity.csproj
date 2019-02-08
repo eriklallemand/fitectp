@@ -178,10 +178,6 @@
     <Compile Include="Migrations\201902071124115_ImagePathInPersonTable.Designer.cs">
       <DependentUpon>201902071124115_ImagePathInPersonTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902071125239_ImagePathInPersonTable1.cs" />
-    <Compile Include="Migrations\201902071125239_ImagePathInPersonTable1.Designer.cs">
-      <DependentUpon>201902071125239_ImagePathInPersonTable1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs" />
     <Compile Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.Designer.cs">
       <DependentUpon>201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs</DependentUpon>
@@ -194,16 +190,16 @@
     <Compile Include="Migrations\201902081335097_StartDateInCourseTable.Designer.cs">
       <DependentUpon>201902081335097_StartDateInCourseTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902071529240_myprofilephoto.cs" />
-    <Compile Include="Migrations\201902071529240_myprofilephoto.Designer.cs">
-      <DependentUpon>201902071529240_myprofilephoto.cs</DependentUpon>
+    <Compile Include="Migrations\201902081429100_MergedFromLessonsStory1.cs" />
+    <Compile Include="Migrations\201902081429100_MergedFromLessonsStory1.Designer.cs">
+      <DependentUpon>201902081429100_MergedFromLessonsStory1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOccurrence.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Enrollment.cs" />
-    <Compile Include="Models\ImageUpload.cs" />
+    <Compile Include="ViewModels\ImageUpload.cs" />
     <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\OfficeAssignment.cs" />
     <Compile Include="Models\Person.cs" />
@@ -328,9 +324,6 @@
     <EmbeddedResource Include="Migrations\201902071124115_ImagePathInPersonTable.resx">
       <DependentUpon>201902071124115_ImagePathInPersonTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071125239_ImagePathInPersonTable1.resx">
-      <DependentUpon>201902071125239_ImagePathInPersonTable1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.resx">
       <DependentUpon>201902071311450_BuildCourseOccurrencesAndAddImagePathIntoPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,8 +333,8 @@
     <EmbeddedResource Include="Migrations\201902081335097_StartDateInCourseTable.resx">
       <DependentUpon>201902081335097_StartDateInCourseTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071529240_myprofilephoto.resx">
-      <DependentUpon>201902071529240_myprofilephoto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902081429100_MergedFromLessonsStory1.resx">
+      <DependentUpon>201902081429100_MergedFromLessonsStory1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
