@@ -16,26 +16,22 @@ namespace ContosoUniversity.Controllers.Api
 {
     public class StudentDTOesController : ApiController
     {
+        public static StudentDTO studentDTO = new StudentDTO();
+        public static Student student = new Student();
         private SchoolContext db = new SchoolContext();
-
-        //// GET: api/StudentDTOes
-        //public IQueryable<StudentDTO> GetStudentDTOes()
-        //{
-        //    return db.StudentDTOes;
-        //}
-
+        
         // GET: api/StudentDTOes/5
         [ResponseType(typeof(StudentDTO))]
         public IHttpActionResult GetStudentDTO(int id)
         {
-            // StudentDTO studentDTO = db.StudentDTOes.Find(id);
-            Student student = db.Students.Find(id);
-
-            if (student == null)
+            if(db.Students.Any(x => x.ID == id))
+            {
+                student = db.Students.Find(id);
+            } else 
             {
                 return NotFound();
             }
-            StudentDTO studentDTO = new StudentDTO();
+           // StudentDTO studentDTO = new StudentDTO();
             studentDTO.id = id;
             studentDTO.lastname = student.LastName;
             studentDTO.firstname = student.FirstMidName;

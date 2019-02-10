@@ -71,24 +71,20 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePhoto(string photoFileName)
         {
-            //string UserId = Session["UserId"].ToString();
-            //int UserIdAsInt = int.Parse(UserId);
             Person p = db.People.Find(Session["UserId"]);
+            var photoName = p.ImagePath;
             p.ImagePath = null;
             db.SaveChanges();
-
-            //Session["DeleteSuccess"] = "No";
-            var photoName = "";
-            photoName = photoFileName;
-            string fullPath = Request.MapPath(photoName);
+            
+            string fullPath = Request.MapPath(Path.Combine("..","Images",photoName));
 
             if (System.IO.File.Exists(fullPath))
             {
                 System.IO.File.Delete(fullPath);
-                //Session["DeleteSuccess"] = "Yes";
             }
             return RedirectToAction("UploadPhoto");
         }
+
         //GET: Student/my_profile
         public ActionResult My_Profile(int? id)
         {

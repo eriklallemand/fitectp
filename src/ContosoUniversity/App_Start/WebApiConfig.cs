@@ -12,6 +12,7 @@ namespace ContosoUniversity
         public static void Register(HttpConfiguration config)
         {
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
             //config.MapHttpAttributeRoutes();
             //// This next commented out line was causing the problem
             ////var jsonFormatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
@@ -31,6 +32,7 @@ namespace ContosoUniversity
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

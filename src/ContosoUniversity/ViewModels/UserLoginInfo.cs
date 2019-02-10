@@ -13,8 +13,10 @@ namespace ContosoUniversity.ViewModels
         [Required]
         public string LastName { get; set; }
         [Required]
+        [StringLength(50),MinLength(6)]
         public string Login { get; set; }
         [Required]
+        [StringLength(50), MinLength(6)]
         public string Password { get; set; }
         [Required]
         public string Discriminator { get; set; }
